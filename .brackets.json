@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        'www/lib',
+        'platforms',
+        'plugins'
+    ]
+}

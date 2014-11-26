@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/factories.js"></script>
+</head>
+
+<body ng-app="testApp" ng-controller="mainCtrl">
+
+    <ion-pane>
+        <ion-header-bar class="bar-header bar-energized">
+            <h1 class="title">Todo:</h1>
+
+            <button ng-click="hideEditing()" class="button" ng-show='showEdit'>Done</button>
+
+            <button ng-click="openPopover($event)" ng-hide='showEdit' class="button button-icon icon ion-android-add"></button>
+
+        </ion-header-bar>
+        <ion-content has-bouncing='true'>
+            <ion-list type='card' show-reorder='showEdit' show-delete='showEdit' can-swipe='true'>
+                <ion-item ng-repeat="item in items track by item.id" class="item item-thumbnail-left" href="#/{{item.id}}" on-hold="showEditing()">
+                    <ion-option-button class='button icon button-assertive ion-minus-circled' ng-click='deleteItem($index)'></ion-option-button>
+                    
+                    <img ng-src="{{item.img}}" style="height:100px">
+                    <h2>{{item.title}}</h2>
+                    <h4>{{item.description}}</h4>
+
+                    <ion-reorder-button class='ion-navicon' on-reorder='reorderItem(item, $fromIndex, $toIndex)'>
+                    </ion-reorder-button>
+
+                </ion-item>
+            </ion-list>
+
+        </ion-content>
+    </ion-pane>
+</body>
+
+</html>
