@@ -1,4 +1,4 @@
 ionicTodo
 =========
 
-Todo app build with ionic frameworl
+Todo app build with ionic framework
